@@ -1,4 +1,4 @@
-# Cube wave by BeesAndBombs, demonstrated by Daniel Shiffman
+# Cube wave by BeesAndBombs, demonstrated by Daniel Shiffman from The Coding Train
 # v0.1 - shell, code and version comments
 # v0.2 - 2D cube wave with varying opacity, like panes shifting to reflect sunlight
 # v0.3 - 3D cube wave
@@ -15,7 +15,7 @@ def setup():
     size(600, 600, P3D)
     background(220, 79, 35)
     cam = PeasyCam(this, width/2, height/2, 0, 500)
-    #noStroke()
+    noStroke()
 
 
 def draw():
@@ -43,10 +43,14 @@ def draw():
             
             # map the alpha of each square to the sine function's range.
             a = map(h, -1, 1, 10, 80)
-            
+            # we want to do the same thing for h (height), only it's a larger range.
+            h = map(h, -1, 1, 100, 800)
             # Make the rectangles. Change to boxes in plain 3D and, in this case, rectangles in modded 3D.
-            fill(0, 0, 100, a)
-            rect(0, 0, w, w)
+            # when using boxes, the alpha fill will make things too bright.
+            fill(0, 0, 100, 10)
+            # rect is for 2D, box is for 3D. Use either the alpha or the height h variable.
+            # rect(0, 0, w, w)
+            box(w, w, h)
             popMatrix()
     
     angle += 2
